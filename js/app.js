@@ -169,10 +169,10 @@
 				console.log(localStorage.pseudoLog);
 					for(var j = 0; j < data.result.talk.length; j++){
 						if(data.result.talk[j].user_name !== localStorage.pseudoLog){
-							$chat.append('<div class="message"><span class="messageName">' + data.result.talk[j].user_name + ' : </span> ' + data.result.talk[j].content + '</div>').scrollTop(-10*100000000000);
+							$chat.append('<div class="message"><span class="messageName">' + data.result.talk[j].user_name + ' : </span> ' + data.result.talk[j].content + '</div>');
 						}
 						if(data.result.talk[j].user_name === localStorage.pseudoLog){
-							$chat.append('<div class="messageFromMe"><span class="messageName">' + data.result.talk[j].user_name + ' : </span> ' + data.result.talk[j].content + '</div>').scrollTop(-10*100000000000);
+							$chat.append('<div class="messageFromMe"><span class="messageName">' + data.result.talk[j].user_name + ' : </span> ' + data.result.talk[j].content + '</div>');
 						}
 					}
 			});
