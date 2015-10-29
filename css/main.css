@@ -215,6 +215,8 @@ label{
 	height: 400px;
 	padding: 15px;
 	border-radius: 15px;
+	overflow-y: scroll;
+	overflow: hidden;
 }
 #logged, #chat{
 	float: left;
@@ -261,9 +263,20 @@ label{
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	-webkit-box-shadow: 4px 4px 11px 0px rgba(50, 50, 50, 0.29);
-	-moz-box-shadow:    4px 4px 11px 0px rgba(50, 50, 50, 0.29);
-	box-shadow:         4px 4px 11px 0px rgba(50, 50, 50, 0.29);
+}
+.messageFromMe{
+	background-color: white;
+	margin-bottom: 20px;
+	max-height: 500px;
+	color: #55acee;
+	max-width: 350px;
+	margin-left: 80px;
+	padding: 10px;
+	font-size: 0.8em;
+	padding-left: 15px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 #wrapperTchat{

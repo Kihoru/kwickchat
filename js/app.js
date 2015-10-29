@@ -20,8 +20,7 @@
 	const $messageToSend	= $('#messageToSend');
 	const $sendBox 			= $('#sendBox');
 
-	var token, user_id, status, pcw, pcwOk, logine, pseudoLog, pcwLog, userId, token, test, pseudoFromS, mdpFromS, message, messageLogout;
-
+	var token, user_id, status, pcw, pcwOk, logine, pseudoLog, pcwLog, userId, token, test, pseudoFromS, mdpFromS, message, messageLogout, messageDone = false;
 	var tblMsg = [];
 
 	var mdpokbool = false;
@@ -77,11 +76,14 @@
 						throw new Error('noob');
 
 					localStorage.setItem('pseudo', logine);  
-
+					localStorage.setItem('done', messageDone);
 					console.log(data.result);
 					status = data.result.status;
 					if(status === 'done'){
-						window.location.href = 'index.html';
+              			$('#signupOK').append('INSCRIPTION OK');
+            			setTimeout(function(){
+            				window.location.href = 'index.html';
+            			}, 200);
 					}
 				});
 
@@ -104,7 +106,8 @@
 					status = data.result.status;
 
 					console.log(status);
-					console.log(data.result);	
+					console.log(data.result);
+					localStorage.setItem('pseudonyme', pseudoLog);
 					localStorage.setItem('token', data.result.token);
 					localStorage.setItem('id', data.result.id);
 
@@ -161,12 +164,17 @@
 			requestAPI('talk/list/' + token + '/' + 0, function(err, data){
 				if(err)
 					throw Error('FAILURE');
+				localStorage.getItem('pseudonyme', pseudoLog);
 				$chat.empty();
-				for(var j = 0; j < data.result.talk.length; j++){
-					console.log(data.result.talk[j].user_name);
-					$chat.append('<div class="message"><span class="messageName">' + data.result.talk[j].user_name + ' : </span> ' + data.result.talk[j].content + '</div>').scrollTop(-10*100000000000);
-				}
-
+				console.log(localStorage.pseudoLog);
+					for(var j = 0; j < data.result.talk.length; j++){
+						if(data.result.talk[j].user_name !== localStorage.pseudoLog){
+							$chat.append('<div class="message"><span class="messageName">' + data.result.talk[j].user_name + ' : </span> ' + data.result.talk[j].content + '</div>').scrollTop(-10*100000000000);
+						}
+						if(data.result.talk[j].user_name === localStorage.pseudoLog){
+							$chat.append('<div class="messageFromMe"><span class="messageName">' + data.result.talk[j].user_name + ' : </span> ' + data.result.talk[j].content + '</div>').scrollTop(-10*100000000000);
+						}
+					}
 			});
 		}
 	}
