@@ -20,7 +20,7 @@
 	const $messageToSend	= $('#messageToSend');
 	const $sendBox 			= $('#sendBox');
 
-	var token, user_id, status, pcw, pcwOk, login, pseudoLog, pcwLog, userId, token, test, pseudoFromS, mdpFromS, message, messageLogout;
+	var token, user_id, status, pcw, pcwOk, logine, pseudoLog, pcwLog, userId, token, test, pseudoFromS, mdpFromS, message, messageLogout;
 
 	var tblMsg = [];
 
@@ -60,30 +60,31 @@
 	}
 	var app = {
 		initialize: function(){
-			app.signup();
-			app.login();
 			app.logout(localStorage.token, localStorage.id);
-			/*app.loggedUser();*/
 		},
 		signup: function(){
 
 			$formConnect.on('submit', function(e){
 
 				e.preventDefault();
-
 				pcw = $mdpSignup.val();
 				pcwOk = $mdpOk.val();
-				login = $pseudoSignup.val();
+				logine = $pseudoSignup.val();
 				compareMdp(pcw, pcwOk);
 
-				requestAPI('signup/' + login + '/' + pcw, function(err, data){
+				requestAPI('signup/' + logine + '/' + pcw, function(err, data){
 					if(err)
 						throw new Error('noob');
 
-					localStorage.setItem('pseudo', login);  
+					localStorage.setItem('pseudo', logine);  
 
-					console.log(data.result.status);
+					console.log(data.result);
+					status = data.result.status;
+					if(status === 'done'){
+						window.location.href = 'index.html';
+					}
 				});
+
 
 				/*window.location.href = 'index.html';*/
 			});
@@ -102,7 +103,8 @@
 
 					status = data.result.status;
 
-					console.log(status);	
+					console.log(status);
+					console.log(data.result);	
 					localStorage.setItem('token', data.result.token);
 					localStorage.setItem('id', data.result.id);
 

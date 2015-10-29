@@ -135,8 +135,11 @@ label{
 }
 #pseudoSignup, #passwordSignup, label, #sendSignup, #mdpOkSignup{
 	float: left;
-		background-color: transparent;
+	background-color: transparent;
 	color: white;
+}
+.btn-primary:hover, .btn-primary:focus{
+	background-position: 0px 0px;
 }
 .mdp{
 	clear: both;
@@ -196,6 +199,9 @@ label{
 #messageToSend, #sendTheMessage{
 	display: inline-block;
 }
+#sendTheMessage{
+	margin-left: 20px;
+}
 #wrapperChat{
 	margin-left: 10%;
 }
@@ -217,7 +223,7 @@ label{
 #chat{
 	width: 50%;
 	background-color: rgba(255, 255, 255, 0.1);
-	border-radius: 15px;
+	border-radius: 5px;
 	height: 400px;
 	overflow-y: scroll;
 	margin-bottom: 15px;
@@ -226,11 +232,13 @@ label{
 
 .logged{
 	text-align: center;
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(255, 255, 255, 0.1);
+	border: 1px white solid;
 	padding: 10px;
 	margin-bottom: 5px;
 	border-radius: 5px;
-	color: white;
+	color: grey;
+	font-size: 0.8em;
 }
 .blue{
 	width: 10px;
@@ -248,6 +256,7 @@ label{
 	max-width: 350px;
 	margin-left: 15px;
 	padding: 10px;
+	font-size: 0.8em;
 	padding-left: 15px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;

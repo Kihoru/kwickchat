@@ -48,7 +48,7 @@
                     </div>
                     <form id="sendBox">
                         <input type="textarea" placeholder="message..." id="messageToSend" class="form-control" rows="1">
-                        <input type="submit" value="Envoyer" id="sendTheMessage" class="btn btn-primary">
+                        <input type="submit" value="Envoyer →" id="sendTheMessage" class="btn btn-primary">
                     </form>
                 </div>               
                 <input type="button" value="Disconnect" id="disconnect" class="btn btn-primary">
@@ -63,7 +63,7 @@
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             app.initialize();
-            app.say(localStorage.token, localStorage.id, localStorage.login);
+            app.say(localStorage.token, localStorage.id, localStorage.logine);
             app.loggedUser(localStorage.token);
             app.messageList(localStorage.token);
             setInterval(function(){
