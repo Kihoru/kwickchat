@@ -1,0 +1,294 @@
+/*=================================================================================
+======================================= connexion =================================
+===================================================================================
+===================================================================================
+===================================================================================*/
+
+@font-face {
+    font-family: 'LobsterTwoBold';
+    src: url('../fonts/LobsterTwoBold.eot');
+    src: url('../fonts/LobsterTwoBold.eot') format('embedded-opentype'),
+         url('../fonts/LobsterTwoBold.woff2') format('woff2'),
+         url('../fonts/LobsterTwoBold.woff') format('woff'),
+         url('../fonts/LobsterTwoBold.ttf') format('truetype'),
+         url('../fonts/LobsterTwoBold.svg#LobsterTwoBold') format('svg');
+}
+#main_body{
+	background-image: url(../img/bg_connect.jpg);
+	padding-top: 0px; 
+}
+#main_body_signup{
+	background-image: url(../img/bg_signup.jpg);
+	padding-top: 0px; 
+}
+#main_body_chat{
+	background-image: url(../img/bg_chat.jpg);
+	padding-top: 0px; 
+}
+#mainPage{
+	width: 100%;
+	max-width: 1280px;
+	margin: 0 50px 0 50px;
+}
+
+#wrapper{
+	margin-left: 40%;
+}
+
+.title{
+	color: white;
+	font-family: 'LobsterTwoBold', arial, sans-serif !important;
+	font-size: 3.5em;
+}
+.signup{
+	border: none;
+	background-color: transparent;
+	color: #2A6496;
+}
+
+.signup:hover{
+	text-decoration: underline;
+}
+
+.connexion{
+	display: block;
+	margin-top: 20px;
+}
+
+#pseudo{
+	margin: 0 0 15px 38px;
+	width: 20%;
+	background-color: transparent;
+}
+#pseudo, #password, label, #send, #mdpOk, #exampleInputFile{
+	float: left;
+}
+.mdp{
+	clear: both;
+}
+.k{
+	color: white;
+	font-size: 8em;
+	margin-left: 20%;
+}
+.mdpok{
+	margin-top: 15px;
+}
+#password, #mdpOk{
+	width: 20%;
+	background-color: transparent;
+}
+
+label{
+	margin-right: 15px;
+}
+#mdpOk, #exampleInputFile{
+	margin-top: 15px;
+}
+#send, #logo{
+	margin: 15px 0 15px 18%;
+}
+
+#send{
+	clear: both;
+}
+
+#logo{
+	border: solid 4px #2A6496;
+	border-radius: 25%;
+}
+
+/*=================================================================================
+======================================= signup ====================================
+===================================================================================
+===================================================================================
+===================================================================================*/
+
+#mainPage{
+	width: 100%;
+	max-width: 1280px;
+	margin: 0 50px 50px 50px;
+}
+
+#wrapper{
+	margin-left: 40%;
+}
+.signup{
+	border: none;
+	background-color: transparent;
+	color: white;
+}
+
+.signup:hover{
+	text-decoration: underline;
+	color: white;
+}
+
+.connexion{
+	display: block;
+	margin-top: 20px;
+}
+
+#pseudoSignup{
+	margin: 0 0 15px 38px;
+	width: 20%;
+}
+#pseudoSignup, #passwordSignup, label, #sendSignup, #mdpOkSignup{
+	float: left;
+		background-color: transparent;
+	color: white;
+}
+.mdp{
+	clear: both;
+}
+.mdpok{
+	margin-top: 15px;
+}
+#passwordSignup, #mdpOkSignup{
+	width: 20%;
+}
+
+label{
+	margin-right: 15px;
+	color: rgba(255, 255, 255, 0.5);
+	font-family: arial, sans-serif !important;
+}
+#mdpOkSignup, #exampleInputFile{
+	margin-top: 15px;
+}
+#sendSignup, #logo{
+	margin: 15px 0 15px 18%;
+}
+
+#sendSignup{
+	clear: both;
+}
+
+#logo{
+	border: solid 4px #2A6496;
+	border-radius: 25%;
+}
+#back{
+	float: left;
+	clear: both;
+}
+
+.signupTitle{
+	color: #2A6496;
+	font-family: 'LobsterTwoBold', arial, sans-serif !important;
+	margin-left: 15%;
+}
+
+/*=================================================================================
+======================================= chat ======================================
+===================================================================================
+===================================================================================
+===================================================================================*/
+#pseudoConnect{
+	margin-bottom: 15px;
+}
+#messageToSend{
+	width: 50%;
+	margin-right: 2%;
+	background-color: transparent;
+}
+
+#messageToSend, #sendTheMessage{
+	display: inline-block;
+}
+#wrapperChat{
+	margin-left: 10%;
+}
+
+#sendBox{
+	max-width: 72%;
+}
+
+#logged{
+	width: 15%;
+	height: 400px;
+	padding: 15px;
+	border-radius: 15px;
+}
+#logged, #chat{
+	float: left;
+	border: solid 1px #fff;
+}
+#chat{
+	width: 50%;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 15px;
+	height: 400px;
+	overflow-y: scroll;
+	margin-bottom: 15px;
+	word-break: break-all;
+}
+
+.logged{
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.2);
+	padding: 10px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	color: white;
+}
+.blue{
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: #2A6496;
+	margin-top: 5px;
+	float: left;
+}
+.message{
+	background-color: #55acee;
+	margin-bottom: 20px;
+	max-height: 500px;
+	color: #fff;
+	max-width: 350px;
+	margin-left: 15px;
+	padding: 10px;
+	padding-left: 15px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 4px 4px 11px 0px rgba(50, 50, 50, 0.29);
+	-moz-box-shadow:    4px 4px 11px 0px rgba(50, 50, 50, 0.29);
+	box-shadow:         4px 4px 11px 0px rgba(50, 50, 50, 0.29);
+}
+
+#wrapperTchat{
+	margin-left: 20%;
+}
+
+.titleChat{
+	color: white;
+	font-family: 'LobsterTwoBold', arial, sans-serif !important;
+	font-size: 3.5em;
+	margin-left: 120px;
+}
+
+#nb, #nbUsers p{
+	display: inline-block;
+}
+#nbUsers p{
+
+}
+#nbUsers{
+	width: 20%;
+	margin-bottom: 15px;
+	padding: 5px;
+	border-radius: 5%;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.green{
+	color: green;
+	font-weight: bold;
+}
+
+.messageName{
+	font-weight: bold;
+	color: #fff;
+	font-size: 1.2em;
+}
