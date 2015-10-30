@@ -28,7 +28,7 @@
 #mainPage{
 	width: 100%;
 	max-width: 1280px;
-	margin: 0 50px 0 50px;
+	margin: 0 50px 0 0;
 }
 
 #wrapper{
@@ -107,7 +107,7 @@ label{
 #mainPage{
 	width: 100%;
 	max-width: 1280px;
-	margin: 0 50px 50px 50px;
+	margin: 0 50px 0px 50px;
 }
 
 #wrapper{
@@ -214,18 +214,27 @@ label{
 	width: 15%;
 	height: 400px;
 	padding: 15px;
-	border-radius: 15px;
+	border-radius: 15px 0 0 15px;
 	overflow-y: scroll;
 	overflow: hidden;
+	margin-top: 35px;
 }
 #logged, #chat{
 	float: left;
 	border: solid 1px #fff;
 }
+#moreMsg, #goDown{
+	display: inline-block;
+	background-color: transparent;
+	border: none;
+	color: white;
+	margin-top: 2px;
+}
+#goDown{ margin-left: 10px; }
 #chat{
 	width: 50%;
 	background-color: rgba(255, 255, 255, 0.1);
-	border-radius: 5px;
+	border-radius: 0 5px 5px 0;
 	height: 400px;
 	overflow-y: scroll;
 	margin-bottom: 15px;
@@ -337,4 +346,13 @@ label{
 
 .error{
 	display: block;
+}
+.preloader{
+	width: 250px;
+	height:30px;
+	padding: 5px;
+	color: white;
+}
+#preloader{
+	margin-bottom: 5px;
 }

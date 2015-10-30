@@ -20,6 +20,7 @@
         </style>
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/jquery.loading.min.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
@@ -43,6 +44,9 @@
 
                 </div>
                     <div id="wrapperTchat">
+                    <div id="preloader" class="preloader">
+                            
+                    </div>
                     <div id="chat">
                         
                     </div>
@@ -50,6 +54,8 @@
                         <input type="textarea" placeholder="message..." id="messageToSend" class="form-control" rows="1">
                         <input type="submit" value="Envoyer →" id="sendTheMessage" class="btn btn-primary">
                     </form>
+                    <a href="#" id="moreMsg">Afficher plus</a>
+                    <a href="#" id="goDown">Retour en bas</a>
                 </div>               
                 <input type="button" value="Disconnect" id="disconnect" class="btn btn-primary">
             </div>
@@ -60,22 +66,10 @@
 
         <script src="js/app.js"></script>
         <script src="js/jquery.nicescroll.min.js"></script>
+        <script src="js/jquery.loading.min.js"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
-            app.initialize();
-            app.say(localStorage.token, localStorage.id, localStorage.logine);
-            $('#chat').scrollTop(10*10000000);
-            app.loggedUser(localStorage.token);
-            app.messageList(localStorage.token);
-            setInterval(function(){
-                app.loggedUser(localStorage.token); 
-            }, 5000);
-            setInterval(function(){
-                app.messageList(localStorage.token);
-                $('#chat').scrollTop(10*10000000);
-            }, 1000);
-            $("#chat").niceScroll({cursorwidth : "15px"});
-            $("#logged").niceScroll({cursorwidth : "10px"});
+            app.chatInit();
         </script>
     </body>
 </html>

@@ -20,7 +20,7 @@
 	const $messageToSend	= $('#messageToSend');
 	const $sendBox 			= $('#sendBox');
 
-	var token, user_id, status, pcw, pcwOk, logine, pseudoLog, pcwLog, userId, token, test, pseudoFromS, mdpFromS, message, messageLogout, messageDone = false, messageListToAppend, max;
+	var token, user_id, status, pcw, pcwOk, logine, pseudoLog, pcwLog, userId, token, test, pseudoFromS, mdpFromS, message, messageLogout, messageDone = false, messageListToAppend, max = 15, test = false;
 	var tblMsg = [];
 
 	var mdpokbool = false;
@@ -147,8 +147,8 @@
 		say: function(token, id, log){
 			$sendBox.on('submit', function(e){
 				e.preventDefault();
-				message = $messageToSend.val();
-			
+				message = encodeURIComponent($messageToSend.val());
+				
 				requestAPI('say/' + token + '/' + id + '/' + message, function(err, data){
 					if(err)
 						throw new Error('FAILURE');
@@ -157,14 +157,13 @@
 				});
 			});
 		},
-		messageList: function(token) {
+		messageList: function(token, max) {
 			requestAPI('talk/list/' + token + '/' + 0, function(err, data){
 				if(err)
 					throw Error('FAILURE');
 				var mypseudo = localStorage.getItem('pseudo');
 				$chat.empty();
-				/*console.log(data.result.talk);*/
-					for(var j = data.result.talk.length - 15; j < data.result.talk.length; j++){
+					for(var j = data.result.talk.length - max; j < data.result.talk.length; j++){
 						if(data.result.talk[j].user_name === mypseudo){
 							$chat.append('<div class="messageFromMe"><span class="messageNameFromMe">Moi : </span> ' + data.result.talk[j].content + '</div>');
 						}
@@ -172,7 +171,39 @@
 							$chat.append('<div class="message"><span class="messageName">' + data.result.talk[j].user_name + ' : </span> ' + data.result.talk[j].content + '</div>');
 						}
 					}
+					test = false;
+	            	$('#preloader').empty();
+
 			});
+		},
+		chatInit: function(){
+			app.initialize();
+            app.say(localStorage.token, localStorage.id, localStorage.logine);
+            max = 15;
+            app.loggedUser(localStorage.token);
+            app.messageList(localStorage.token, max);
+            setInterval(function(){
+                app.loggedUser(localStorage.token); 
+            }, 5000);
+            if(test === false){
+            	$('#moreMsg').on('click', function(e){
+
+            		e.preventDefault();
+	            	test = true;
+	                max = max + 15;
+	                $('#preloader').append('Chargements d\'anciens messages.');
+	            	app.messageList(localStorage.token, max);
+	            	$('#chat').scrollTop(-10*10000000);
+            	});
+            }
+            setInterval(function(){
+                app.messageList(localStorage.token, max);
+            }, 1000);
+            $("#chat").niceScroll({cursorwidth : "12px", cursorcolor: '#4780b1', cursoropacitymax: '0.7', background: 'url(../img/scroll.png)'});
+            $("#logged").niceScroll({cursorwidth : "8px", cursorcolor: '#4780b1', cursoropacitymax: '0.9'});
+            $('#goDown').on('click', function(){
+                $('#chat').scrollTop(10*10000000);
+            });
 		}
 	}
 	window.app = app;
