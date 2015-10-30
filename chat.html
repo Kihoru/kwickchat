@@ -64,15 +64,15 @@
         <script>
             app.initialize();
             app.say(localStorage.token, localStorage.id, localStorage.logine);
+            $('#chat').scrollTop(10*10000000);
             app.loggedUser(localStorage.token);
             app.messageList(localStorage.token);
-            $('#chat').scrollTop(-10*100000000000);
             setInterval(function(){
                 app.loggedUser(localStorage.token); 
             }, 5000);
             setInterval(function(){
                 app.messageList(localStorage.token);
-                $('#chat').scrollTop(-10*100000000000);
+                $('#chat').scrollTop(10*10000000);
             }, 1000);
             $("#chat").niceScroll({cursorwidth : "15px"});
             $("#logged").niceScroll({cursorwidth : "10px"});
