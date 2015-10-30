@@ -20,10 +20,11 @@
 	const $messageToSend	= $('#messageToSend');
 	const $sendBox 			= $('#sendBox');
 
-	var token, user_id, status, pcw, mdpCorrect, pcwOk, logine, pseudoLog, pcwLog, userId, token, pseudoFromS, mdpFromS, message, messageLogout, messageDone = false, messageListToAppend, max = 15, loadMore = false;
-	var tblMsg = [];
-
-	var mdpokbool = false;
+	var token, user_id, status, pcw, mdpCorrect,
+	pcwOk, logine, pseudoLog, pcwLog, userId,
+	token, pseudoFromS, mdpFromS, message,
+	messageLogout, messageDone = false,
+	messageListToAppend, max = 15, loadMore = false, mdpokbool = false, tblMsg = [];
 
 	function requestAPI	(url, cb) {
 		var request = $.ajax({
@@ -31,11 +32,9 @@
 			url: API_ROOT_URL + url,
 			dataType: 'jsonp'
 		});
-
 		request.fail(function(jqXHR, textStatus, errorTrown){
 			cb(textStatus, null);
 		});
-
 		request.done(function(data){
 			cb(null, data);
 		});
@@ -158,8 +157,6 @@
 				requestAPI('say/' + token + '/' + id + '/' + message, function(err, data){
 					if(err)
 						throw new Error('FAILURE');
-
-					$('#messageToSend').val('');
 				});
 			});
 		},
