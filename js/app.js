@@ -116,6 +116,9 @@
 					}
 					else if(status === 'done'){
 						window.location.href = 'chat.html';
+						setTimeout(function(){
+							$('#chat').scrollTop(10*10000000);
+						}, 2000);
 					}	
 				});
 			});
@@ -129,6 +132,7 @@
 					console.log(data.result.status);
 
 					document.location.href = 'index.html';
+
 				});
 			});
 		},
@@ -165,18 +169,17 @@
 					throw Error('FAILURE');
 				var mypseudo = localStorage.getItem('pseudo');
 				$chat.empty();
-					for(var j = data.result.talk.length - max; j < data.result.talk.length; j++){
-						if(data.result.talk[j].user_name === mypseudo){
-							$chat.append('<div class="messageFromMe"><span class="messageNameFromMe">Moi : </span> ' + data.result.talk[j].content + '</div>');
-						}
-						else{
-							$chat.append('<div class="message"><span class="messageName">' + data.result.talk[j].user_name + ' : </span> ' + data.result.talk[j].content + '</div>');
-						}
+				for(var j = data.result.talk.length - max; j < data.result.talk.length; j++){
+					if(data.result.talk[j].user_name === mypseudo){
+						$chat.append('<div class="messageFromMe"><span class="messageNameFromMe">Moi : </span> ' + data.result.talk[j].content + '</div>');
 					}
-					loadMore = false;
-	            	$('#preloader').empty();
-
-			});
+					else{
+						$chat.append('<div class="message"><span class="messageName">' + data.result.talk[j].user_name + ' : </span> ' + data.result.talk[j].content + '</div>');
+					}
+				}
+				loadMore = false;
+            	$('#preloader').empty();
+	        });
 		},
 		chatInit: function(){
 			app.initialize();
@@ -184,7 +187,7 @@
             max = 15;
             app.loggedUser(localStorage.token);
             app.messageList(localStorage.token, max);
-            $('#chat').scrollTop(10*10000000);
+            
             setInterval(function(){
                 app.loggedUser(localStorage.token); 
             }, 5000);
