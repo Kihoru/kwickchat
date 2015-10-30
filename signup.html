@@ -30,52 +30,41 @@
         <div id="mainPage">
             <h1 class="title">K-Chat</h1>
 
-            <div id="wrapper">
-            
-            <h2 class="signupTitle">Inscription</h2>
-
-            <div id="errorSignup" class="noError">
-                
+            <div id="wrapper">            
+                <h2 class="signupTitle">Inscription</h2>
+                <div id="errorSignup" class="noError">
+                    <!-- Balise d'erreur à l'inscription -->
+                </div>
+                <form id="formConnection">
+                <!-- Formulaire d'inscription -->
+                <!-- Pseudo -->
+                    <div class="connexion">
+                        <label>Pseudo : </label>
+                        <input type="text" id="pseudoSignup"  class="form-control" placeholder="pseudo" required>
+                    </div>
+                <!-- Mot de passe 1 -->
+                    <div class="connexion">
+                        <label class="mdp">Mot de passe : </label>
+                        <input type="password" id="passwordSignup" required class="form-control">
+                    </div>
+                <!-- Mot de passe 2 -->
+                    <div class="connexion">
+                        <label class="mdp mdpok">Confirmation : </label>
+                        <input type="password" id="mdpOkSignup" required class="form-control">
+                    </div>
+                <!-- Submit -->
+                    <input type="submit" id="sendSignup" value="S'inscrire" class="btn btn-primary">
+                </form>
+                <!-- Back to connection -->
+                <p><a type="button" id="back"  href="index.html" class="btn btn-primary"> ←   back</a></p>
             </div>
-            <form id="formConnection">
-                <div class="connexion">
-                    <label>Pseudo : </label>
-                    <input type="text" id="pseudoSignup"  class="form-control" placeholder="pseudo" required>
-                </div>
-                <div class="connexion">
-                    <label class="mdp">Mot de passe : </label>
-                    <input type="password" id="passwordSignup" required class="form-control">
-                </div>
-                <div class="connexion">
-                    <label class="mdp mdpok">Confirmation : </label>
-                    <input type="password" id="mdpOkSignup" required class="form-control">
-                </div>
-
-                <input type="submit" id="sendSignup" value="S'inscrire" class="btn btn-primary">
-            </form>
-              
-<!--               <form class="connexion" enctype="multipart/form-data">
-  <label class="mdp mdpok">Avatar : </label> 
-  <input type="file" id="exampleInputFile" name="image"accept="img/*" required>
-  <img class="preview mdp mdpok" src="">
-</form> -->
-              
-              
-
-
-              <a type="button" id="back"  href="index.html" class="btn btn-primary"> ←   back</a>
-            </div>
-
-
         </div>
+
+        <!-- Script -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
         <script src="js/vendor/bootstrap.min.js"></script>
-
         <script src="js/app.js"></script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             app.signup();
         </script>

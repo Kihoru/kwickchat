@@ -29,41 +29,36 @@
         <![endif]-->
         <div id="mainPage">
             <h1 class="title">K-Chat</h1>
+            <p><a class="signup" href="signup.html">inscription</a></p>
 
-            <a class="signup" href="signup.html">inscription</a>
-
-
-      
             <div id="wrapper">
               <p><span class="k">K</span></p>
               <div id="errorSignup" class="noError">
-                
+                <!-- Erreur de connection -->
               </div>
-              <div id="signupOK"></div>
               <form id="formLog">
+                <!-- Formulaire de connexion -->
+                <!-- Pseudo -->
                 <div class="connexion">
                   <label>Pseudo : </label>
                   <input type="text" id="pseudo"  class="form-control" placeholder="pseudo" required>
                 </div>
+                <!-- Mot de passe -->
                 <div class="connexion">
                   <label class="mdp">Mot de passe : </label>
                   <input type="password" id="password" required class="form-control">
                 </div>
-              
+              <!-- Submit -->
                 <input type="submit" id="send" value="Connexion" class="btn btn-primary">
               </form>
-            </div>
-
-
-        </div>
+            </div><!-- #wrapper -->
+        </div><!-- #mainPage -->
+        <!-- Script -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
         <script src="js/vendor/bootstrap.min.js"></script>
-
         <script src="js/app.js"></script>
         <script src="js/jquery.nicescroll.min.js"></script>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             app.login();
         </script>

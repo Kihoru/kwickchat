@@ -20,7 +20,7 @@
 	const $messageToSend	= $('#messageToSend');
 	const $sendBox 			= $('#sendBox');
 
-	var token, user_id, status, pcw, pcwOk, logine, pseudoLog, pcwLog, userId, token, test, pseudoFromS, mdpFromS, message, messageLogout, messageDone = false, messageListToAppend, max = 15, test = false;
+	var token, user_id, status, pcw, mdpCorrect, pcwOk, logine, pseudoLog, pcwLog, userId, token, pseudoFromS, mdpFromS, message, messageLogout, messageDone = false, messageListToAppend, max = 15, loadMore = false;
 	var tblMsg = [];
 
 	var mdpokbool = false;
@@ -40,15 +40,7 @@
 			cb(null, data);
 		});
 	};
-	function compareMdp	(mdp1, mdp2){
-		if(mdp1.length <= 3 || mdp1.length >= 15 || mdp1 !== mdp2){
-			mdpokbool = false;
-		}
-		if(mdp1 === mdp2){
-			mdpokbool = true;
-		}
-		return mdpokbool;
-	}
+	
 	var app = {
 		initialize: function(){
 			app.logout(localStorage.token, localStorage.id);
@@ -62,26 +54,34 @@
 				pcw = $mdpSignup.val();
 				pcwOk = $mdpOk.val();
 				logine = $pseudoSignup.val();
-				compareMdp(pcw, pcwOk);
-					requestAPI('signup/' + logine + '/' + pcw, function(err, data){
+				if(pcw.length <= 3 || pcw.length >= 15 || pcw !== pcwOk){
+					mdpokbool = false;
+					$('#errorSignup').removeClass('noError').addClass('error');
+					$('#errorSignup').append('<p>Mot de passe incorrect</p>');
+				}
+				else if(pcw === pcwOk){
+					console.log('dafuq');
+					mdpokbool = true;
+					mdpCorrect = pcw;
+				}
+				if(mdpokbool === true){
+					requestAPI('signup/' + logine + '/' + mdpCorrect, function(err, data){
 						if(err)
 							throw new Error('noob');
-						  
-						localStorage.setItem('done', messageDone);
-						console.log(data.result);
+
 						status = data.result.status;
+						console.log(data.result);
+						console.log(status);
+
 						if(status === 'failure' && data.result.message == 'this login is not available'){
 							$('#errorSignup').removeClass('noError').addClass('error');
 							$('#errorSignup').append('<p>Login incorrect</p>');
-						}
-						if(mdpokbool == false){
-							$('#errorSignup').removeClass('noError').addClass('error');
-							$('#errorSignup').append('<p>Mot de passe incorrect</p>');
-						}
-						if(status === 'done'){
+						}	
+						else if(status === 'done' && mdpokbool === true){
 	            			window.location.href = 'index.html';
 						}
 					});
+				}
 			});
 			
 		},
@@ -104,15 +104,17 @@
 					localStorage.setItem('pseudo', pseudoLog);
 					localStorage.setItem('token', data.result.token);
 					localStorage.setItem('id', data.result.id);
-					if(status === 'failure' && data.result.message == 'wrong password'){
-						$('#errorSignup').removeClass('noError').addClass('error');
-						$('#errorSignup').append('<p>Mot de passe incorrect</p>');
+					if(status === 'failure'){
+						if(status === 'failure' && data.result.message == 'wrong password'){
+							$('#errorSignup').removeClass('noError').addClass('error');
+							$('#errorSignup').append('<p>Mot de passe incorrect</p>');
+						}
+						else if(status === 'failure' && data.result.message == 'user ' + pseudoLog + ' unknown'){
+							$('#errorSignup').removeClass('noError').addClass('error');
+							$('#errorSignup').append('<p>Utilisateur inconnu</p>');
+						}
 					}
-					if(status === 'failure' && data.result.message == 'user ' + pseudoLog + ' unknown'){
-						$('#errorSignup').removeClass('noError').addClass('error');
-						$('#errorSignup').append('<p>Utilisateur inconnu</p>');
-					}
-					if(status === 'done'){
+					else if(status === 'done'){
 						window.location.href = 'chat.html';
 					}	
 				});
@@ -171,7 +173,7 @@
 							$chat.append('<div class="message"><span class="messageName">' + data.result.talk[j].user_name + ' : </span> ' + data.result.talk[j].content + '</div>');
 						}
 					}
-					test = false;
+					loadMore = false;
 	            	$('#preloader').empty();
 
 			});
@@ -182,20 +184,22 @@
             max = 15;
             app.loggedUser(localStorage.token);
             app.messageList(localStorage.token, max);
+            $('#chat').scrollTop(10*10000000);
             setInterval(function(){
                 app.loggedUser(localStorage.token); 
             }, 5000);
-            if(test === false){
+            if(loadMore === false){
             	$('#moreMsg').on('click', function(e){
 
             		e.preventDefault();
-	            	test = true;
+	            	loadMore = true;
 	                max = max + 15;
 	                $('#preloader').append('Chargements d\'anciens messages.');
 	            	app.messageList(localStorage.token, max);
 	            	$('#chat').scrollTop(-10*10000000);
             	});
             }
+            //loadMoreer une div qui affiche en fadeIn/fadeOut des messages pour les deconnections
             setInterval(function(){
                 app.messageList(localStorage.token, max);
             }, 1000);
