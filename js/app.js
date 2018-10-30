@@ -1,8 +1,8 @@
 (function (window, $) {
 	'use strict';
 
-	const API_ROOT_URL 		= "http://greenvelvet.alwaysdata.net/kwick/api/";
-	const $pseudoSignup 	= $('#pseudoSignup');
+	const API_ROOT_URL 		= "http://xxxxxxxxx.xxxxx.xxx/kwick/api/";
+	const $pseudoSignup 		= $('#pseudoSignup');
 	const $mdpSignup 		= $('#passwordSignup');
 	const $mdpOk 			= $('#mdpOkSignup');
 	const $pseudo 			= $('#pseudo');
@@ -10,14 +10,14 @@
 	const $sendSignup		= $('#sendSignup');
 	const $send 			= $('#send');
 	const $logout 			= $('#logout');
-	const $pseudoConnect	= $('#pseudoConnect');
-	const $chat				= $('#chat');
+	const $pseudoConnect		= $('#pseudoConnect');
+	const $chat			= $('#chat');
 	const $formConnect 		= $('#formConnection');
 	const $formLog			= $('#formLog');
 	const $disconnect		= $('#disconnect');
 	const $logged 			= $('#logged');
-	const $sendTheMessage	= $('#sendTheMessage');
-	const $messageToSend	= $('#messageToSend');
+	const $sendTheMessage		= $('#sendTheMessage');
+	const $messageToSend		= $('#messageToSend');
 	const $sendBox 			= $('#sendBox');
 
 	var token, user_id, status, pcw, mdpCorrect,
